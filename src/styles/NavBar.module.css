@@ -1,0 +1,22 @@
+.NavBar {
+    background-color:#DCEDC8;
+    font-size:large;
+    height:75px;
+    border-top: 4px solid darkgreen;
+    font-weight:600;
+}
+
+nav img {
+    margin-bottom:75px;
+    overflow:visible;
+
+}
+
+#nav-central {
+    justify-content:center;
+}
+
+nav :hover{
+    color:saddlebrown;
+    font-size:large;
+}

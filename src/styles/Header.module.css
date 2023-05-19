@@ -1,0 +1,21 @@
+.header{
+    background-color:#DCEDC8;
+    font-family:"Roboto", sans-serif;
+}
+
+h1 {
+    font-size:3.5rem;
+    text-align:left;
+    font-weight:bolder;
+    color:green;
+    margin-left:15px;
+    letter-spacing:-6px;
+}
+
+h1 span {
+    color:red;
+}
+
+.NavBar {
+    justify-content: center;
+}
