@@ -12,11 +12,21 @@ nav img {
 
 }
 
+nav a {
+    color:lightslategrey;
+    text-decoration:none;
+    padding: 0 10px 0 10px;
+}
+
 #nav-central {
     justify-content:center;
 }
 
-nav :hover{
+nav a:hover{
     color:saddlebrown;
     font-size:large;
+}
+
+.Active i {
+    color:saddlebrown;
 }
