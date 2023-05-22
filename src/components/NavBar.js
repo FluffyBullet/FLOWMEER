@@ -8,7 +8,7 @@ const NavBar = () => {
     <div>
         <Navbar className={styles.NavBar} expand="md" fixed="bottom">
             <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav"><img src={logo} alt="logo" height="75px"/></Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="align-items-center text-center md m-auto" id="nav-central">
                         <Nav.Link href="#home">
