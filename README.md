@@ -26,7 +26,7 @@
 
 ## __Introduction__
 
-For my fith project on my level 5 course of full stack developer, I I have chosen to create a new social feature application witht he name FLOWMEER.
+For my fith project on my level 5 course of full stack developer, I I have chosen to create a new social feature application with the name FLOWMEER.
 
 |Link to the live website is here:||
 |----|----|
@@ -91,6 +91,9 @@ My results come as the following:
 | Creating Post | Voting | | | 
 | Creating Profile | Adding details on profile page | | | 
 | Log In/Out | | | | 
+| Edit of post| 
+| Edit Comments |
+| Delete of Post |
 
 ________________________
 ## __Design__
