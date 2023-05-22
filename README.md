@@ -65,12 +65,19 @@ As a User, I:
     * See all images posed by users and include further details.
     * Filter my feed I wish to view based on my search entries.
     * Add a "Vote" to the image(s) which stand out to me.
+    * Display all recent post by date order, starting with the most recent.
+    * Read further information on plant bio's.
 1. __Account__
     * Create a new account for myself
     * Log in and out from the website with confirmation of my status.
     * Like images I find interesting which I can find later by a filter.
+    * Delete post I previously made.
+    * Delete comments I previously made.
+    * Edit my account credentials.
 1. __Create__
     * Add new post/images to the feed.
+    * Edit post created by myself.
+    * Edit comments created by myself.
     * My own profile page, including personal selections and a profile picture.
     * Create comments on post where I wish to leave my feedback
 
