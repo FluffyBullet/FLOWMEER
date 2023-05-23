@@ -154,6 +154,9 @@ To assist on presenting correct information and content, I have used the followi
 | 3. | Microsoft Office Applications | __Excel__ - to allow an easy to view template of database models with linking data/shapes; __Powerpoint__ - creating a simple digital website framework and using the Icons/shapes to create the logo. |
 | 4. | https://perenual.com | Free API Found for use with the website and good foundation fo reasearch
 
+| Libraries Used| Where| For |
+| pycountry| Database | profiles model |
+
 ## __Acknowledgements__
 
 During this course, I have fed my idea's to my friends and colleages who have inspired my selections and narrow my options. Also boosting my enthusiasm to complete the task at hand. These include:
