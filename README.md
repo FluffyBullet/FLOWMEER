@@ -120,6 +120,13 @@ Like online retail stores, the website will include a filter option to the left 
 | Profile | <img src="./readme-images/small_profilepage.png" height=250px /> | <img src="./readme-images/med_large_profilepage.png" height=250px /> | 
 | Flower Profile | <img src="./readme-images/small_flowerprofile.png" height=250px /> | <img src="./readme-images/med_large_flowerprofile.png" height=250px /> |
 
+During development of the webiste page, I attempted to use the flower API mentioned via perenual. Unfortunately this API requires a specific name and limited to number of flowers per page.
+In place of tagging the specific flowers, I've looked over several internet pages finding family names of flower groups.
+
+website used: https://www.treeguideuk.co.uk/flower-family-order-2/
+
+For diversity, I used "Family Name" as the filter options. This will replace the users favourite flower on the profile and most used flowers on the front page.
+
 
 ### Color Pattern
 
