@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Container from 'react-bootstrap/container';
+import Container from 'react-bootstrap/Container';
 import styles from "../../components/SignUpForm.module.css";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
