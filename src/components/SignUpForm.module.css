@@ -3,10 +3,24 @@ form {
     margin:0 auto;
 }
 
-@media screen and (min-width: 700px){
+.InputPlace {
+    text-align:center;
+}
+
+@media screen and (min-width: 721px){
     form {
         width:50%;
         margin:0 auto;
+    }
+
+     .first_name {
+        width:30%;
+        display:inline-block;
+    }
+    .family_name {
+        width:70%;
+        padding-left:5px;
+        display:inline-block;
     }
 
 }
