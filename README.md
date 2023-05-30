@@ -162,6 +162,7 @@ To assist on presenting correct information and content, I have used the followi
 | 4. | https://perenual.com | Free API Found for use with the website and good foundation fo reasearch
 
 | Libraries Used| Where| For |
+|-----|----|-----|
 | pycountry| Database | profiles model |
 
 ## __Acknowledgements__

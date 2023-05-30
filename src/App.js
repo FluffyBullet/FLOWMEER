@@ -2,7 +2,8 @@ import styles from './components/App.module.css';
 import NavBar from "./components/NavBar";
 import Header from './components/Header';
 import Container from 'react-bootstrap/container';
-import {Route,Routes, Outlet, Switch} from 'react-router-dom';
+import {Route,Routes, Outlet} from 'react-router-dom';
+import './api/axiosDefaults'
 
 function App() {
   return (
