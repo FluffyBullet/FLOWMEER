@@ -2,7 +2,7 @@ import styles from './components/App.module.css';
 import NavBar from "./components/NavBar";
 import Header from './components/Header';
 import SignUpForm from './pages/auth/SignUpForm';
-import Container from 'react-bootstrap/container';
+import Container from 'react-bootstrap/Container';
 import {Route,Routes, Outlet} from 'react-router-dom';
 import './api/axiosDefaults'
 
