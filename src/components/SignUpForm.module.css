@@ -1,0 +1,12 @@
+form {
+    width: 75%;
+    margin:0 auto;
+}
+
+@media screen and (min-width: 700px){
+    form {
+        width:50%;
+        margin:0 auto;
+    }
+
+}

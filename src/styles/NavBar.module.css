@@ -1,32 +1,58 @@
+/* Style background of navbar to suit header */
 .NavBar {
-    background-color:#DCEDC8;
-    font-size:large;
+    background-color: #DCEDC8;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+}
+
+/* on collapse, display image, to click for expansion of navbar links */
+.NavBar Button {
+    margin:0 auto;
     height:75px;
-    border-top: 4px solid darkgreen;
-    font-weight:600;
+    border:none;
+}
+.NavBar Button sup {
+    padding-left:15px;
 }
 
-nav img {
-    margin-bottom:75px;
-    overflow:visible;
-
+/* Hides logo image when in mobile view. */
+.NavBar span {
+    display:none;
 }
 
+/* Colors anchor tags to contrast background */
 nav a {
     color:lightslategrey;
     text-decoration:none;
     padding: 0 10px 0 10px;
 }
 
-#nav-central {
-    justify-content:center;
-}
-
+/* Confirms page selection with brown color */
 nav a:hover{
     color:saddlebrown;
     font-size:large;
 }
 
-.Active i {
-    color:saddlebrown;
+@media screen and (min-width:700px){
+    .NavBar {
+        font-size:large;
+        height:75px;
+        border-top: 4px solid darkgreen;
+        font-weight:600;
+    }
+    .NavBar span {
+        display:inherit;
+    }
+    
+    nav a {
+        color:lightslategrey;
+        text-decoration:none;
+        padding: 0 10px 0 10px;
+    }
+    
+    #nav-central {
+        justify-content:center;
+    }
+    
 }

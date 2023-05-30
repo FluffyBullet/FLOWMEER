@@ -9,7 +9,9 @@ const NavBar = () => {
     <div>
         <Navbar className={styles.NavBar} expand="md" fixed="bottom">
             <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"><img src={logo} alt="logo" height="75px"/></Navbar.Toggle>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"><img src={logo} alt="logo" height="75px"/>
+                <sup>Menu <i class="fa-solid fa-caret-down"></i></sup>
+                </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="align-items-center text-center md m-auto" id="nav-central">
                         <NavLink to="/" className={styles.NavLink} activeClassName={styles.Active} exact>
@@ -38,11 +40,11 @@ const NavBar = () => {
                             LogIn
                             </div>
                         </NavLink>
-                        <NavLink to="/logout" className={styles.NavLink} activeClassName={styles.Active}> 
+                        <NavLink to="/signup" className={styles.NavLink} activeClassName={styles.Active}> 
                             <div>
                             <i class="fa-solid fa-leaf"></i>
                             <br/>
-                            LogOut
+                            Sign Up
                             </div>
                         </NavLink>
                     </Nav>
