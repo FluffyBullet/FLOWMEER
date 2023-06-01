@@ -1,46 +1,43 @@
 import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
+
 import styles from "../../components/SignUpForm.module.css";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-import { Alert } from 'bootstrap';
+import Alert from 'react-bootstrap/Alert';
+import pageAccessories from '../../components/pageAccessories.module.css';
 
-function SignUpForm() {
-
-    const handleChange = () => (event) => {
+const SignUpForm = () => {
+    
+    
+    const [signUpData, setSignUpData] = useState({
+        username:'',
+        password1:'',
+        password2:'',
+    })
+    const {username, password1, password2} = signUpData;
+    const handleChange = (event) => {
         setSignUpData ({
             ...signUpData,
-            [event.target.name]: event.target.value,
+            [event.target.name] : event.target.value
         });
     }
+    console.log(signUpData)
 
     const [errors, setErrors] = useState({});
 
     const navigate = useNavigate();
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post('dj-rest-auth/registration/', signUpData)
-            navigate.push('signin');
-        } catch(err) {
-            setErrors(err.response?.data)
+          await axios.post("/dj-rest-auth/registration/", signUpData);
+          navigate("/signin");
+        } catch (err) {
+          setErrors(err.response?.data);
         }
-    }
-
-
-    const [signUpData, setSignUpData] = useState({
-        username:'',
-        first_name:'',
-        family_name:'',
-        password1:'',
-        password2:''
-    })
-    const {username, first_name, family_name, password1, password2} = signUpData;
-
+      };
 
   return (
     <div>
@@ -55,73 +52,54 @@ function SignUpForm() {
                     <Form.Label className="d-none">Username</Form.Label>
                     <Form.Control className={`${styles.InputPlace}`} 
                     type="text" 
+                    name="username"
                     value={username}
                     placeholder="<-x Username" 
-                    name="username"
-                    onChange={handleChange('username')}
+                    onChange={handleChange}
                     />
                 </Form.Group>
                 {errors.username?.map((message,idx) =>
-                <Alert variant="warning" key={idx}>{message}</Alert>)}
+                <Alert variant="danger" key={idx}>{message}</Alert>)}
 
-                <Row>
-                    <Col>
-                    {/* Asking for users name */}
-                        <Form.Group className={`mb-3 ${styles.first_name}`} controlId="FirstName" >
-                            <Form.Label className="d-none">First Name</Form.Label>
-                            <Form.Control type="text" 
-                            className={`${styles.InputPlace}`} 
-                            placeholder="First Name"
-                            value={first_name}
-                            name="first_name"
-                            onChange={handleChange('first_name')} />
-                        </Form.Group>
-                        {errors.username?.map((message,idx) =>
-                        <Alert variant="warning" key={idx}>{message}</Alert>)}
-
-                        <Form.Group className={`mb-3 ${styles.family_name}`} controlId="FamilyName" >
-                            <Form.Label className="d-none">Last Name</Form.Label>
-                            <Form.Control type="text" 
-                            className={`${styles.InputPlace}`} 
-                            placeholder="Last Name" 
-                            value={family_name}
-                            name="family_name"
-                            onChange={handleChange('family_name')}/>
-                        </Form.Group>
-                        {errors.username?.map((message,idx) =>
-                        <Alert variant="warning" key={idx}>{message}</Alert>)}
-                    </Col>
-                </Row>
                 {/* Password section, original + authentication */}
-                <Form.Group className="mb-3" controlId="password" >
+                <Form.Group className="mb-3" controlId="password">
                     <Form.Label className="d-none">Password Entry</Form.Label>
                     <Form.Control type="password" 
                     className={`${styles.InputPlace}`} 
                     placeholder="Create a password" 
                     value={password1}
                     name="password1"
-                    onChange={handleChange('password1')}
+                    onChange={handleChange}
                     />
                 </Form.Group>
-                {errors.username?.map((message,idx) =>
-                <Alert variant="warning" key={idx}>{message}</Alert>)}
+                {errors.password1?.map((message,idx) =>
+                <Alert variant="danger" key={idx}>{message}</Alert>)}
 
-                <Form.Group className="mb-3" controlId="ConfirmPassword" name="password2">
+                <Form.Group className="mb-3" controlId="ConfirmPassword">
                     <Form.Label className="d-none">re-enter password</Form.Label>
                     <Form.Control type="password" 
                     className={`${styles.InputPlace}`} 
                     placeholder="Confirm your password"
                     value={password2} 
                     name='password2'
-                    onChange={handleChange('password2')}/>
+                    onChange={handleChange}/>
                 </Form.Group>
-                {errors.username?.map((message,idx) =>
-                <Alert variant="warning" key={idx}>{message}</Alert>)}
+                {errors.password2?.map((message,idx) =>
+                <Alert variant="danger" key={idx}>{message}</Alert>)}
 
-                <Button variant="primary" type="submit">
+                <Button className={pageAccessories.first_button} type="submit">
                     Create account
                 </Button>
+                {errors.non_field_errors?.map((message, idx) =>(
+                    <Alert key={idx} variant="danger" className="mt-3">
+                        {message}
+                    </Alert>
+                ))}
             </Form>
+            <div className="mt-3">
+                    <h4><u>Already have an account ?</u></h4>
+                    <p>Log in <Link to="/signin">Here</Link></p>
+            </div>
 
         </div>
         

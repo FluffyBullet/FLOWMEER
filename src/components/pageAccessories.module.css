@@ -1,0 +1,15 @@
+.first_button {
+    background-color: saddlebrown;
+    border-radius: 15px;
+    color:white;
+    border: none;
+
+}
+
+.first_button:hover {
+    background-color: white;
+    color:saddlebrown;
+    border: 2px solid saddlebrown;
+    border-radius: 15px;
+
+}
