@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styles from "../../components/SignUpForm.module.css";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -24,7 +24,7 @@ function SignUpForm() {
     const handleSubmit = async(event) => {
         event.preventDefault();
         try {
-            await axios.post('dj-rest-aut/registration/', signUpData)
+            await axios.post('dj-rest-auth/registration/', signUpData)
             navigate.push('signin');
         } catch(err) {
             setErrors(err.response?.data)
@@ -57,8 +57,9 @@ function SignUpForm() {
                     type="text" 
                     value={username}
                     placeholder="<-x Username" 
+                    name="username"
                     onChange={handleChange('username')}
-                    name="username"/>
+                    />
                 </Form.Group>
                 {errors.username?.map((message,idx) =>
                 <Alert variant="warning" key={idx}>{message}</Alert>)}
