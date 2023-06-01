@@ -3,8 +3,28 @@ import {Navbar, Container, Nav} from "react-bootstrap";
 import logo from '../assets/logo.png'
 import styles from '../styles/NavBar.module.css'
 import {NavLink} from "react-router-dom";
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const NavBar = () => {
+    const currentUser = useCurrentUser();
+    const loggedInIcons = <>{currentUser?.username}</>
+    const loggedOutIcons =(
+        <> 
+            <NavLink to="/signin" className={styles.NavLink} > 
+                <div>
+                <i className="fa-solid fa-fan"></i>
+                <br/>
+                LogIn
+                </div>
+            </NavLink>
+            <NavLink to="/signup" className={styles.NavLink} > 
+                <div>
+                <i className="fa-solid fa-leaf"></i>
+                <br/>
+                Sign Up
+                </div>
+            </NavLink>
+        </>);
   return (
     <div>
         <Navbar className={styles.NavBar} expand="md" fixed="bottom">
@@ -33,20 +53,7 @@ const NavBar = () => {
                             <img src={logo} alt="logo" height="200px" ></img>
                         </div>    
                     </Navbar.Brand>
-                        <NavLink to="/signin" className={styles.NavLink} > 
-                            <div>
-                            <i className="fa-solid fa-fan"></i>
-                            <br/>
-                            LogIn
-                            </div>
-                        </NavLink>
-                        <NavLink to="/signup" className={styles.NavLink} > 
-                            <div>
-                            <i className="fa-solid fa-leaf"></i>
-                            <br/>
-                            Sign Up
-                            </div>
-                        </NavLink>
+                        {currentUser ? loggedOutIcons: loggedInIcons}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

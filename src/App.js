@@ -7,8 +7,14 @@ import Container from 'react-bootstrap/Container';
 import {Route,Routes, Outlet} from 'react-router-dom';
 import './api/axiosDefaults'
 
+
+
+
 function App() {
+
+  
   return (
+
     <div className={styles.App}>
       <Header/>
       <NavBar/>
@@ -25,6 +31,7 @@ function App() {
 
       <Outlet />
     </div>
+
   );
 }
 

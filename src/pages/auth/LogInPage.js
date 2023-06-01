@@ -6,14 +6,31 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
 import pageAccessories from '../../components/pageAccessories.module.css';
+import { SetCurrentUserContext } from '../../contexts/CurrentUserContext';
 
 const LogInForm = () => {
+
+    const setCurrentUser = SetCurrentUserContext();
     
     const [LogInData, setLogInData] = useState({
         username:'',
         password:'',
     })
     const {username, password} = LogInData;
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+          const {data} = await axios.post("/dj-rest-auth/login/", LogInData);
+          setCurrentUser(data.user)
+          navigate("/");
+        } catch (err) {
+            setErrors(err.response?.data)
+        }
+      };
+
     const handleChange = (event) => {
         setLogInData ({
             ...LogInData,
@@ -21,18 +38,6 @@ const LogInForm = () => {
         });
     }
 
-    const [errors, setErrors] = useState({});
-
-    const navigate = useNavigate();
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-          await axios.post("/dj-rest-auth/login/", LogInData);
-          navigate("/");
-        } catch (err) {
-        }
-      };
 
   return (
     <div>
@@ -86,7 +91,7 @@ const LogInForm = () => {
             </Form>
             <div className="mt-3">
                     <h4><u>Need an account ?</u></h4>
-                    <p>Create one <Link to="/signin">here</Link></p>
+                    <p>Create one <Link to="/signup">here</Link></p>
             </div>
 
         </div>
