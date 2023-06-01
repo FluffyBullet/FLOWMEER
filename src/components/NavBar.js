@@ -14,14 +14,14 @@ const NavBar = () => {
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="align-items-center text-center md m-auto" id="nav-central">
-                        <NavLink to="/" className={styles.NavLink} activeClassName={styles.Active} exact>
+                        <NavLink to="/" className={styles.NavLink} exact>
                             <div>
                             <i class="fa-brands fa-pagelines"></i>
                             <br/>
                             Home
                             </div>
                         </NavLink>
-                        <NavLink to="/flower" className={styles.NavLink} activeClassName={styles.Active}>
+                        <NavLink to="/flower" className={styles.NavLink}>
                             <div>
                             <i class="fa-solid fa-seedling"></i>
                             <br/>
@@ -33,14 +33,14 @@ const NavBar = () => {
                             <img src={logo} alt="logo" height="200px" ></img>
                         </div>    
                     </Navbar.Brand>
-                        <NavLink to="/signin" className={styles.NavLink} activeClassName={styles.Active}> 
+                        <NavLink to="/signin" className={styles.NavLink} > 
                             <div>
                             <i class="fa-solid fa-fan"></i>
                             <br/>
                             LogIn
                             </div>
                         </NavLink>
-                        <NavLink to="/signup" className={styles.NavLink} activeClassName={styles.Active}> 
+                        <NavLink to="/signup" className={styles.NavLink} > 
                             <div>
                             <i class="fa-solid fa-leaf"></i>
                             <br/>
