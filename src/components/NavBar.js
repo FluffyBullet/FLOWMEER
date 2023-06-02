@@ -4,10 +4,20 @@ import logo from '../assets/logo.png'
 import styles from '../styles/NavBar.module.css'
 import {NavLink} from "react-router-dom";
 import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { Link } from 'react-router-dom';
+import Avatar from '../components/Avatar';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
-    const loggedInIcons = <>{currentUser?.username}</>
+    const loggedInIcons = <>
+        <Link
+        to={'/profiles/${currentUser.profile_id}'}
+        >
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40}/>
+        </Link>
+        </>
+        
+
     const loggedOutIcons =(
         <> 
             <NavLink to="/signin" className={styles.NavLink} > 

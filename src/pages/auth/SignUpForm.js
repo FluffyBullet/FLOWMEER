@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {useNavigate, Link} from "react-router-dom";
 
-import styles from "../../components/SignUpForm.module.css";
+import styles from "../../styles/SignUpForm.module.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
-import pageAccessories from '../../components/pageAccessories.module.css';
+import pageAccessories from '../../styles/pageAccessories.module.css';
 
 const SignUpForm = () => {
     
