@@ -18,30 +18,32 @@ const NavBar = () => {
 
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
-    const handleSignOut = async() => {
+    const handleSignOut = async () => {
         try {
-            await axios.post('dj-rest-auth/logout/');
-            setCurrentUser(null);
+          await axios.post("dj-rest-auth/logout/");
+          setCurrentUser(null);
         } catch (err) {
-            console.log(err);
+          console.log(err);
         }
-    }
-    const loggedInIcons = <>
-        <Link
-        to={'/profiles/${currentUser.profile_id}'}
+      };
+    const LoggedInIcons = <>
+        <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
         >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40}/>
-        </Link>
-        <Link
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <p>{currentUser?.profile_id}</p>
+      </NavLink>
+        <NavLink
         to={'/'}
         onClick={handleSignOut}>
         <i className="fa-solid fa-clover"></i> Sign Out
-        </Link>
+        </NavLink>
 
         </>
         
 
-    const loggedOutIcons =(
+    const LoggedOutIcons =(
         <> 
             <NavLink to="/signin" className={styles.NavLink} > 
                 <div>
@@ -90,7 +92,8 @@ const NavBar = () => {
                             <img src={logo} alt="logo" height="200px" ></img>
                         </div>    
                     </Navbar.Brand>
-                        {currentUser ? loggedOutIcons: loggedInIcons}
+                        {LoggedOutIcons}
+                        {LoggedInIcons}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

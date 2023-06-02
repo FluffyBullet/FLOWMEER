@@ -7,16 +7,13 @@ import PostCreateForm from "./pages/post/PostCreateForm";
 import HomeFeed from './pages/HomeFeed';
 import Container from 'react-bootstrap/Container';
 import {Route,Routes, Outlet} from 'react-router-dom';
-import './api/axiosDefaults'
+import './api/axiosDefaults';
 
 
 
 
 function App() {
-
-  
   return (
-
     <div className={styles.App}>
       <Header/>
       <NavBar/>
