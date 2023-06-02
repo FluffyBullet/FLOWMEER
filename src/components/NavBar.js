@@ -10,10 +10,14 @@ import {
 import { Link } from 'react-router-dom';
 import Avatar from '../components/Avatar';
 import axios from 'axios';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    const {expanded, setExpanded, ref} = useClickOutsideToggle();
+
     const handleSignOut = async() => {
         try {
             await axios.post('dj-rest-auth/logout/');
@@ -56,9 +60,13 @@ const NavBar = () => {
         </>);
   return (
     <div>
-        <Navbar className={styles.NavBar} expand="md" fixed="bottom">
+        <Navbar className={styles.NavBar} expanded={expanded} expand="md" fixed="bottom">
             <Container fluid>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"><img src={logo} alt="logo" height="75px"/>
+                <Navbar.Toggle 
+                ref={ref} 
+                onClick={() => setExpanded(!expanded)} 
+                aria-controls="basic-navbar-nav">
+                <img src={logo} alt="logo" height="75px"/>
                 <sup>Menu <i className="fa-solid fa-caret-down"></i></sup>
                 </Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">

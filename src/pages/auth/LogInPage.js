@@ -6,11 +6,11 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
 import pageAccessories from '../../styles/pageAccessories.module.css';
-import { SetCurrentUserContext } from '../../contexts/CurrentUserContext';
+import { useSetCurrentUser } from '../../contexts/CurrentUserContext';
 
 const LogInForm = () => {
 
-    const setCurrentUser = SetCurrentUserContext;
+    const setCurrentUser = useSetCurrentUser();
     
     const [LogInData, setLogInData] = useState({
         username:'',
