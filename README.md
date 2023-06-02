@@ -160,6 +160,8 @@ To assist on presenting correct information and content, I have used the followi
 | 2. | https://react-bootstrap-v4.netlify.app/ | Similar to the walkthrough project, this website advised of codes to import enabling use of pre-defined formatting. |
 | 3. | Microsoft Office Applications | __Excel__ - to allow an easy to view template of database models with linking data/shapes; __Powerpoint__ - creating a simple digital website framework and using the Icons/shapes to create the logo. |
 | 4. | https://perenual.com | Free API Found for use with the website and good foundation fo reasearch
+| 5. | www.openai.com | new ChatGPT for troubleshooting against code requiring assistance or fixing.|
+| 6. | Youtube | Web Dev Simplified - for visual walktrhough on use of React with clear explanation. |
 
 | Libraries Used| Where| For |
 |-----|----|-----|
