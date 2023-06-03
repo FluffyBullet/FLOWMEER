@@ -11,17 +11,17 @@ import appStyles from "../../styles/PostCreateEdit.module.css";
 import styles from "../../styles/PostCreateEdit.module.css";
 import pageAccessories from "../../styles/pageAccessories.module.css";
 import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import Multiselect from "multiselect-react-dropdown";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostCreateForm() {
     const [errors, setErrors] = useState({});
 
     const [postData, setPostData] = useState({
         title: "",
-        flower_tag: [],
+        flower_tag: '',
         image: "",
     });
     const { title, flower_tag, image } = postData;
@@ -46,27 +46,18 @@ function PostCreateForm() {
         }
     };
 
-    const flowerSelection = []
-    function flowerInput() {
-        console.log(flowerSelection)
-
-    }
-    
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         const formData = new FormData()
-
-        
-
         formData.append('title', title);
         formData.append('flower_tag', flower_tag);
         formData.append('image', imageInput.current.files[0]);
-
+        console.log(useCurrentUser)
 
         try {
             const { data } = await axiosReq.post('/post/', formData);
-            navigate('post/')
+            navigate(`post/${data.id}`)
         } catch (err) {
             console.log(JSON.stringify(postData))
             console.log(err)
@@ -76,52 +67,6 @@ function PostCreateForm() {
         }
     }
 
-    const flower_families = [
-        { name: 'flower_tag', desc: 'Peruvian Lily', id: 'peruvian_lily' },
-        { name: 'flower_tag', desc: 'Colchicum', id: 'colchicum' },
-        { name: 'flower_tag', desc: 'Lily', id: 'lily' },
-        { name: 'flower_tag', desc: 'Orchid', id: 'orchid' },
-        { name: 'flower_tag', desc: 'Iris', id: 'iris' },
-        { name: 'flower_tag', desc: 'Asphodel', id: 'asphodel' },
-        { name: 'flower_tag', desc: 'Daffodil', id: 'daffodil' },
-        { name: 'flower_tag', desc: 'Asparagus', id: 'asparagus' },
-        { name: 'flower_tag', desc: 'Poppy', id: 'poppy' },
-        { name: 'flower_tag', desc: 'Buttercup', id: 'buttercup' },
-        { name: 'flower_tag', desc: 'Saxifrage', id: 'saxifrage' },
-        { name: 'flower_tag', desc: 'Stonecrop', id: 'stonecrop' },
-        { name: 'flower_tag', desc: 'Pea', id: 'pea' },
-        { name: 'flower_tag', desc: 'Rose', id: 'rose' },
-        { name: 'flower_tag', desc: 'Spurge', id: 'spurge' },
-        { name: 'flower_tag', desc: 'Violet', id: 'violet' },
-        { name: 'flower_tag', desc: 'St Johns Wort', id: 'st_johns_wort' },
-        { name: 'flower_tag', desc: 'Geranium', id: 'geranium' },
-        { name: 'flower_tag', desc: 'Loosestrife', id: 'loosestrife' },
-        { name: 'flower_tag', desc: 'Willow-herb', id: 'willow-herb' },
-        { name: 'flower_tag', desc: 'Mallow', id: 'mallow' },
-        { name: 'flower_tag', desc: 'Rock Rose', id: 'rock_rose' },
-        { name: 'flower_tag', desc: 'Cabbage', id: 'cabbage' },
-        { name: 'flower_tag', desc: 'Sea Lavender', id: 'sea_lavender' },
-        { name: 'flower_tag', desc: 'Pink', id: 'pink' },
-        { name: 'flower_tag', desc: 'Phlox', id: 'phlox' },
-        { name: 'flower_tag', desc: 'Primrose', id: 'primrose' },
-        { name: 'flower_tag', desc: 'Heath', id: 'heath' },
-        { name: 'flower_tag', desc: 'Periwinkle', id: 'periwinkle' },
-        { name: 'flower_tag', desc: 'Borage', id: 'borage' },
-        { name: 'flower_tag', desc: 'Convolvulus', id: 'convolvulus' },
-        { name: 'flower_tag', desc: 'Nightshade', id: 'nightshade' },
-        { name: 'flower_tag', desc: 'Olive', id: 'olive' },
-        { name: 'flower_tag', desc: 'Plantain', id: 'plantain' },
-        { name: 'flower_tag', desc: 'Figwort', id: 'figwort' },
-        { name: 'flower_tag', desc: 'Mint', id: 'mint' },
-        { name: 'flower_tag', desc: 'Acanthus', id: 'acanthus' },
-        { name: 'flower_tag', desc: 'Verbena', id: 'verbena' },
-        { name: 'flower_tag', desc: 'Bellflower', id: 'bellflower' },
-        { name: 'flower_tag', desc: 'Daisy', id: 'daisy' },
-        { name: 'flower_tag', desc: 'Umbellifer', id: 'umbellifer' },
-        { name: 'flower_tag', desc: 'Honeysuckle', id: 'honeysuckle' },
-
-    ]
-    let flower = document.getElementById('flowerTags')
 
     const textFields = (
         <div className="text-center">
@@ -136,46 +81,78 @@ function PostCreateForm() {
 
                 />
             </Form.Group>
+            {errors.title?.map((message, idx) =>
+                <Alert variant="danger" key={idx}>
+                    {message}
+                </Alert>)}
             <Form.Group>
                 {/* Intended as flower tag, but amended to description for temporary. */}
                 <Form.Label> Includes families of : </Form.Label>
-                <Multiselect
-                    options={flower_families}
-                    displayValue="desc"
-                    optionValue="id"
-                    name="flowerSelection"
-                    onSelect = {(event) => {
-                        for (let resp in event){
-                            if (resp.id in flowerSelection) {
-                                console.log("not added")
-                            } else {
-                                console.log(event[resp].id)
-                                flowerSelection.push(event[resp].id)
-                                flowerInput();
-                            }
-                        }
-                    }}
-                    closeOnSelect={true}
-                    selectedValues={flowerSelection.push()}
-                />
-                <Form.Label className="d-none">Title</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="flower_tag"
-                    value={flower_tag}
-                    onChange={handleChange}
-                />
+
+                        <Form.Control as="select">
+                    <option className="d-none" value="">
+                         Select Option
+                    </option>
+                    <option>Select flower Family</option>
+                    <option value="peruvian_lily">Peruvian Lily</option>
+                    <option value="colchicum">Colchicum</option>
+                    <option value="lily">Lily</option>
+                    <option value="orchid">Orchid</option>
+                    <option value="iris">Iris</option>
+                    <option value="asphodel">Asphodel</option>
+                    <option value="daffodil">Daffodil</option>
+                    <option value="asparagus">Asparagus</option>
+                    <option value="poppy">Poppy</option>
+                    <option value="buttercup">Buttercup</option>
+                    <option value="saxifrage">Saxifrage</option>
+                    <option value="stonecrop">Stonecrop</option>
+                    <option value="pea">Pea</option>
+                    <option value="rose">Rose</option>
+                    <option value="spurge">Spurge</option>
+                    <option value="violet">Violet</option>
+                    <option value="st_johns_wort">St Johns Wort</option>
+                    <option value="geranium">Geranium</option>
+                    <option value="loosestrife">Loosestrife</option>
+                    <option value="willow-herb">Willow-herb</option>
+                    <option value="mallow">Mallow</option>
+                    <option value="rock_rose">Rock Rose</option>
+                    <option value="cabbage">Cabbage</option>
+                    <option value="sea_lavender">Sea Lavender</option>
+                    <option value="pink">Pink</option>
+                    <option value="phlox">Phlox</option>
+                    <option value="primrose">Primrose</option>
+                    <option value="heath">Heath</option>
+                    <option value="periwinkle">Periwinkle</option>
+                    <option value="borage">Borage</option>
+                    <option value="convolvulus">Convolvulus</option>
+                    <option value="nightshade">Nightshade</option>
+                    <option value="olive">Olive</option>
+                    <option value="plantain">Plantain</option>
+                    <option value="figwort">Figwort</option>
+                    <option value="mint">Mint</option>
+                    <option value="acanthus">Acanthus</option>
+                    <option value="verbena">Verbena</option>
+                    <option value="bellflower">Bellflower</option>
+                    <option value="daisy">Daisy</option>
+                    <option value="umbellifer">Umbellifer</option>
+                    <option value="honeysuckle">Honeysuckle</option>
+                </Form.Control>
             </Form.Group>
+            {errors.flower_tag?.map((message, idx) =>
+                <Alert variange="danger" key={idx}>
+                    {message}
+                </Alert>)}
+
             <Button className={pageAccessories.first_button} type="submit">
                 create
             </Button>
             <Button
                 className={pageAccessories.first_button}
-                onClick={() => { }}
+                onClick={() => { navigate(-1) }}
             >
                 cancel
             </Button>
-        </div>
+        </div >
     );
 
     return (
@@ -220,6 +197,10 @@ function PostCreateForm() {
                                 ref={imageInput}
                             />
                         </Form.Group>
+                        {errors?.Image?.map((message, idx) =>
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>)}
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>

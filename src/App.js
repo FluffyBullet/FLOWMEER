@@ -7,6 +7,7 @@ import PostCreateForm from "./pages/post/PostCreateForm";
 import HomeFeed from './pages/HomeFeed';
 import Container from 'react-bootstrap/Container';
 import {Route,Routes, Outlet} from 'react-router-dom';
+import PostPage from './pages/post/PostPage';
 import './api/axiosDefaults';
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/signin" element={<LogInPage/>}/>
           <Route exact path="/signup" element={<SignUpForm/>}/>
           <Route exact path="/post/create" element={<PostCreateForm/>}/>
+          <Route exact path="/post/:id" element={<PostPage/>}/>
           <Route path="*" element={<p>Sorry, this page is not found</p>}/>
         </Routes>
       </Container>

@@ -60,7 +60,7 @@ const LogInForm = () => {
                     />
                 </Form.Group>
                 {/* Error section for incorrect username */}
-                {errors.username?.map((message,idx) =>
+                {errors?.username?.map((message,idx) =>
                 <Alert variant="danger" key={idx}>{message}</Alert>)}
 
                 {/* Password section */}
@@ -75,7 +75,7 @@ const LogInForm = () => {
                     />
                 </Form.Group>
                 {/* Error section for incorrect password */}
-                {errors.password?.map((message,idx) =>
+                {errors?.password?.map((message,idx) =>
                 <Alert variant="danger" key={idx}>{message}</Alert>)}
 
 
@@ -83,7 +83,7 @@ const LogInForm = () => {
                     Log In
                 </Button>
                 {/* Error section for non-bound errors. */}
-                {errors.non_field_errors?.map((message, idx) =>(
+                {errors?.non_field_errors?.map((message, idx) =>(
                     <Alert key={idx} variant="danger" className="mt-3">
                         {message}
                     </Alert>
