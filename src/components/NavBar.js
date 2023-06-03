@@ -92,8 +92,7 @@ const NavBar = () => {
                             <img src={logo} alt="logo" height="200px" ></img>
                         </div>    
                     </Navbar.Brand>
-                        {LoggedOutIcons}
-                        {LoggedInIcons}
+                        {currentUser ? LoggedInIcons : LoggedOutIcons}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -23,11 +23,6 @@ function HomeFeed() {
             <Row>
               <Col className={`${HomePage.centerPost}`}>
                 {currentUser && addPostIcon}
-                <Link
-                className={HomePage.centerPost}
-                to="/post/create/">
-                  <h5><i className="fa-solid fa-circle-plus"></i> Create Post</h5>
-                </Link>
               </Col>
               <Col>
               <p><i className="fa-solid fa-sort"></i> Sort By</p>

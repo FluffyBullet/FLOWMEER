@@ -24,8 +24,8 @@ const LogInForm = () => {
         event.preventDefault();
         try {
           const {data} = await axios.post("/dj-rest-auth/login/", LogInData);
-          setCurrentUser(data)
-          console.log(JSON.stringify(data))
+          setCurrentUser(data.user)
+          console.log(JSON.stringify(data.user))
           navigate("/");
         } catch (err) {
             setErrors(err.response?.data)

@@ -162,6 +162,7 @@ To assist on presenting correct information and content, I have used the followi
 | 4. | https://perenual.com | Free API Found for use with the website and good foundation fo reasearch
 | 5. | www.openai.com | new ChatGPT for troubleshooting against code requiring assistance or fixing.|
 | 6. | Youtube | Web Dev Simplified - for visual walktrhough on use of React with clear explanation. |
+| 7. | https://www.npmjs.com/package/multiselect-react-dropdown | Create dropdown list for flower family groups. used on Profile and post pages. |
 
 | Libraries Used| Where| For |
 |-----|----|-----|
