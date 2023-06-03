@@ -25,8 +25,9 @@ const LogInForm = () => {
         try {
           const {data} = await axios.post("/dj-rest-auth/login/", LogInData);
           setCurrentUser(data.user)
-          console.log(JSON.stringify(data.user))
+          console.log(data.user.username)
           navigate("/");
+          console.log("data =" + Object.keys(data.user))
         } catch (err) {
             setErrors(err.response?.data)
         }

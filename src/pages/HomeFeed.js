@@ -1,8 +1,8 @@
 import React from 'react';
 import HomePage from '../styles/HomePage.module.css';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCurrentUser } from '../contexts/CurrentUserContext';
+import { CurrentUserContext, useCurrentUser } from '../contexts/CurrentUserContext';
 
 
 function HomeFeed() {
@@ -31,6 +31,8 @@ function HomeFeed() {
             </Row>
           </Container>
         </div>
+        <p>text here</p>
+        <Button onClick={console.log(currentUser)}> Click here for print profile</Button>
       </div>
     </div>
   )

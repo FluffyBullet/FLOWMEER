@@ -26,13 +26,14 @@ const NavBar = () => {
           console.log(err);
         }
       };
+
     const LoggedInIcons = <>
         <NavLink
         className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
+        to={`/profiles/${currentUser?.pk}`}
         >
         <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-        <p>{currentUser?.profile_id}</p>
+        <p>{currentUser?.username}</p>
       </NavLink>
         <NavLink
         to={'/'}
@@ -41,7 +42,6 @@ const NavBar = () => {
         </NavLink>
 
         </>
-        
 
     const LoggedOutIcons =(
         <> 
