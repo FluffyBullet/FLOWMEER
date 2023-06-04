@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Post from "./Post";
 
