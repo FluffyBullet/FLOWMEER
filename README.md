@@ -143,7 +143,7 @@ To host my website, I have used features avaialble from Heroku (salesforce compa
 Below walkthrough will display how to create a copy of my project, but also how to deploy your own project as a walkthrough.
 
 ### Github
-- Forking a respository
+Creating a copy of the repository can be completed by visiting the respository's link provided above, opening a browser and directing to my github/project page.
 ### Salesforce / Heroku
 - Creating a new environment
 - Required Links
@@ -176,3 +176,6 @@ During this course, I have fed my idea's to my friends and colleages who have in
 1. Susan Currie - During our long conversations, we have developed the layout, tag icons and requirements of the website. Without our conversations, my budding idea's would not have blossomed.
 
 To ensure my app followed a logical approach, I chose to create my project alongside the walkthrough project of "Moments". Whilst majority of my concept is similar to the moments walkthrough, there is amendments where I use my requirements to differ from the proposed guide. Likewise the walkthrough is similar content to other social media site's. 
+
+Whilst creating this website, I've encountered a number of issues preventing the development of my project. Including events such as setting inaccuracy causing complications when communicating to the database.
+Studying guides on various internet pages also advise of errors users have found and how they set approach a requirement, but not all options operated as expected. Although I have not completed the task in time to meet my expected deadlines, I found myself looking at alternative methods to complete the task required other than the original outset.
