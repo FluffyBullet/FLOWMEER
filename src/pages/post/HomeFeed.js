@@ -7,6 +7,9 @@ import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
 import Post from './Post';
 import Asset from '../../components/Asset';
+import NoResults from "../../assets/empty.jpg";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 
 function HomeFeed({ message, filter = "" }) {
@@ -58,18 +61,24 @@ function HomeFeed({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {posts.results.length ? (
-              posts.results.map((post) => (
-                <Post key={post.id} {...post} setPosts={setPosts} />
-              ))
+              <InfiniteScroll
+                children={posts.results.map((post) => (
+                  <Post key={post.id} {...post} setPosts={setPosts} />
+                ))}
+                dataLength={posts.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!posts.next}
+                next={() => fetchMoreData(posts, setPosts)}
+              />
             ) : (
               <Container>
-                <Asset src={NoResults} message={message} />
+                <Asset src={NoResults} height={55} message={message} />
               </Container>
             )}
           </>
         ) : (
           <Container >
-            <Asset spinner />
+            <Asset Spinner />
           </Container>
         )}
       </div>

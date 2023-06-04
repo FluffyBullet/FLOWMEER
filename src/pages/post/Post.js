@@ -58,7 +58,7 @@ const Post = (props) => {
     return <>
         {/* Create a card for each post */}
         <Card className={styles.MainCard}>
-            <Card.Body className="align-items-center"Style="padding: 0 11px">
+            <Card.Body className="align-items-center"style={{padding: "0 11px"}}>
                 <Media className="align-items-center justify-content-between " >
                     {/* Image to be shown at the top of the card */}
                     <Link to={`/post/${id}`}>
