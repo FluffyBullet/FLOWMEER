@@ -61,7 +61,7 @@ const Post = (props) => {
             <Card.Body className="align-items-center"Style="padding: 0 11px">
                 <Media className="align-items-center justify-content-between " >
                     {/* Image to be shown at the top of the card */}
-                    <Link to={'/post/${id}'}>
+                    <Link to={`/post/${id}`}>
                         <Card.Img className={styles.PostImage} src={image} alt={title} />
                     </Link>
                     <Row>
@@ -80,7 +80,7 @@ const Post = (props) => {
                                 <span>{updated_at}</span>
                             </div>
                         </Col>
-                        <Col className={styles.SubTitles} className="text-align-right">
+                        <Col className="`${styles.SubTitles} text-align-right`">
                             {flower_tag}
                         </Col>
                     </Row>
