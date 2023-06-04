@@ -42,8 +42,9 @@ const Post = (props) => {
 
     const handleDeVote = async () => {
         try {
-          const { data } = await axiosRes.delete(`/votes/${votes_id}`);
+          await axiosRes.delete(`/votes/${votes_id}`);
           setPosts((prevPost) => ({
+            ...prevPost,
             results: prevPost.results.map((post) =>
               post.id === id ? { ...post, votes_count: post.votes_count - 1, votes_id: null } : post
             ),
@@ -97,10 +98,12 @@ const Post = (props) => {
                     ) : votes_id ? (
                         <span onClick={handleDeVote}>
                             <i class="fa-solid fa-check-to-slot" style={{color: "#d10000",}}></i>
+                            <p>Voted</p>
                             </span>
                     ) : currentUser ? (
                         <span onClick={handleVote}>
                            <i className="fa-solid fa-check-to-slot" style={{color: "#f7f7f7",}}></i>
+                           <p>Not Voted</p>
                         </span>
                     ) : (
                         <OverlayTrigger placement="top" overlap={<Tooltip>Log in to vote for this image</Tooltip>}>

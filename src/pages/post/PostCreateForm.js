@@ -59,7 +59,6 @@ function PostCreateForm() {
             const { data } = await axiosReq.post('/post/', formData);
             navigate(`post/${data.id}`)
         } catch (err) {
-            console.log(JSON.stringify(postData))
             console.log(err)
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data)
@@ -89,7 +88,10 @@ function PostCreateForm() {
                 {/* Intended as flower tag, but amended to description for temporary. */}
                 <Form.Label> Includes families of : </Form.Label>
 
-                        <Form.Control as="select">
+                        <Form.Control as="select"
+                        value={flower_tag}
+                        name="flower_tag"
+                        onChange={handleChange}>
                     <option className="d-none" value="">
                          Select Option
                     </option>

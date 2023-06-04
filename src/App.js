@@ -4,16 +4,19 @@ import Header from './components/Header';
 import SignUpForm from './pages/auth/SignUpForm';
 import LogInPage from './pages/auth/LogInPage';
 import PostCreateForm from "./pages/post/PostCreateForm";
-import HomeFeed from './pages/HomeFeed';
+import HomeFeed from './pages/post/HomeFeed';
 import Container from 'react-bootstrap/Container';
 import {Route,Routes, Outlet} from 'react-router-dom';
 import PostPage from './pages/post/PostPage';
 import './api/axiosDefaults';
+import { useCurrentUser } from './contexts/CurrentUserContext';
 
 
 
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.pk || "";
   return (
     <div className={styles.App}>
       <Header/>
@@ -21,7 +24,11 @@ function App() {
 
       <Container className={styles.Main}>
         <Routes>
-          <Route exact path="/" element={<HomeFeed/> }/>
+          <Route exact path="/" element={<HomeFeed message="I'm unable to find any post matching your search filters. Please amend your options"/> }/>
+          <Route exact path="/feed" element={
+          <HomeFeed message="I can only find a tumbleweed. Try following others or searching more to get results" 
+          filter={'owner__followed__owner__profile=${profile_id}&'}/> }/>
+          <Route exact path="/voted" element={<HomeFeed message="Does not look like you've had your say yet. Get out there and do some voting!"/> }/>
           <Route exact path="/flower" element={<h1>Flower Profile</h1> }/>
           <Route exact path="/signin" element={<LogInPage/>}/>
           <Route exact path="/signup" element={<SignUpForm/>}/>

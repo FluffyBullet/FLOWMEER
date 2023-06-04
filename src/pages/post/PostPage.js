@@ -14,7 +14,7 @@ function PostPage() {
                 const [{data: post}] = await Promise.all([
                     axiosReq.get(`/post/${id}`),
                 ]);
-                setPost({results: [post]})
+                setPost({ results: [post]})
                 console.log(post)
             } catch(err) {
                 console.log(err)
