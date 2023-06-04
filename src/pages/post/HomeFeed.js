@@ -12,6 +12,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 
 
+
 function HomeFeed({ message, filter = "" }) {
   const currentUser = useCurrentUser();
   const [posts, setPosts] = useState({ results: [] });
