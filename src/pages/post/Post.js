@@ -28,7 +28,7 @@ const Post = (props) => {
     const navigate= useNavigate();
 
     const handleEdit = () => {
-       navigate(`/posts/${id}/edit`);
+       navigate(`/post/${id}/edit`);
       };
     
       const handleDelete = async () => {

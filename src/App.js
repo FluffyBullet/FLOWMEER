@@ -10,7 +10,7 @@ import {Route,Routes, Outlet} from 'react-router-dom';
 import PostPage from './pages/post/PostPage';
 import './api/axiosDefaults';
 import { useCurrentUser } from './contexts/CurrentUserContext';
-
+import PostEditForm from "./pages/post/PostEditForm"
 
 
 
@@ -34,6 +34,7 @@ function App() {
           <Route exact path="/signup" element={<SignUpForm/>}/>
           <Route exact path="/post/create" element={<PostCreateForm/>}/>
           <Route exact path="/post/:id" element={<PostPage/>}/>
+          <Route exact path="/post/:id/edit" element={<PostEditForm/>}/>
           <Route path="*" element={<p>Sorry, this page is not found</p>}/>
         </Routes>
       </Container>
