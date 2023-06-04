@@ -19,3 +19,7 @@ h1 span {
 .NavBar {
     justify-content: center;
 }
+
+.PostLine {
+    margin:0;
+}

@@ -1,0 +1,61 @@
+.MainCard {
+    width:98%;
+    background-color:#DCEDC8;
+    margin:0 auto;
+}
+
+.MainCard Body {
+    padding: 0 11px;
+}
+
+.PostImage { 
+    max-height:250px;
+}
+/* content details - different style to gain attraction */
+.SubTitles {
+    color:red;
+    font-family: monospace;
+    font-size:13px;
+    text-align:left;
+}
+
+/* footer of post tab */
+.Reactions {
+    background-color:green;
+    color:white;
+    justify-content:center;
+    margin-top:15px;
+    border-radius: 0 0 8px 8px;
+}
+
+.Reactions div {
+    width:100px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Reactions div a {
+    text-decoration:none;
+    color:white;
+}
+
+@media screen and (min-width:760px){
+    /* Allow space for sidebar columns on med/full screens */
+    .MainCard {
+        width:65%;
+    }
+
+    /* To avoid over stretch of image */
+    .MainCard img {
+        width:fit-content;
+        height:fit-content;
+        max-width:70%;
+        max-height:300px;
+    }
+
+    /* Increase font size for readability */
+    .SubTitles {
+        font-size:16px;
+    }
+}

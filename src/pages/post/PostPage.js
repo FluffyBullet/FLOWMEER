@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
+import Post from "./Post";
 
 function PostPage() {
     const {id} = useParams();
@@ -22,9 +23,9 @@ function PostPage() {
 
         handleMount()
     }, [id])
-    return (
-        <h4> this works</h4>
-    )
+    return <>
+        <Post {...post.results[0]} setPost={setPost} postPage/>
+        </>
 }
 
 export default PostPage

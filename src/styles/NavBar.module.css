@@ -1,5 +1,6 @@
 /* Style background of navbar to suit header */
 .NavBar {
+    border-top: 4px solid darkgreen;
     background-color: #DCEDC8;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -37,7 +38,7 @@ nav a:hover{
     .NavBar {
         font-size:large;
         height:75px;
-        border-top: 4px solid darkgreen;
+        
         font-weight:600;
     }
     .NavBar span {
