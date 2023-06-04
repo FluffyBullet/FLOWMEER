@@ -3,6 +3,7 @@ import styles from '../../styles/Post.module.css'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Card, Col, Media, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Post = (props) => {
     const {
@@ -18,10 +19,41 @@ const Post = (props) => {
         image,
         updated_at,
         postPage,
+        setPosts,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+
+    const handleVote = async () => {
+        try {
+            const {data} = await axiosRes.post('/votes/', {post:id});
+            setPosts((prevPost) => ({
+                results: prevPost.results.map((post) => {
+                    return post.id === id ?
+                    {...post, votes_count : post.votes_count + 1, votes_id: data.id}
+                    :post;
+                })
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const handleDeVote = async () => {
+        try {
+          const { data } = await axiosRes.delete(`/votes/${votes_id}`);
+          setPosts((prevPost) => ({
+            results: prevPost.results.map((post) =>
+              post.id === id ? { ...post, votes_count: post.votes_count - 1, votes_id: null } : post
+            ),
+          }));
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      
+
     return <>
         {/* Create a card for each post */}
         <Card className={styles.MainCard}>
@@ -34,7 +66,7 @@ const Post = (props) => {
                     <Row>
                         {/* Row of information, Title, who by, when it was posted and what family is being featured */}
                         <Col className={styles.SubTitles}>
-                            <div>{title} by <Link to={`/profiles/${profile_id}`}>{owner}</Link></div>
+                            <div><strong>{title}</strong> by <Link to={`/profiles/${profile_id}`}>{owner}</Link></div>
                         </Col>
                         <Col>
                             {flower_tag && <span className={styles.SubTitles}>Featuring:</span>}
@@ -63,15 +95,16 @@ const Post = (props) => {
                             </>
                         </OverlayTrigger>
                     ) : votes_id ? (
-                        <span onClick={() => { }}>
-                            Already voted</span>
+                        <span onClick={handleDeVote}>
+                            <i class="fa-solid fa-check-to-slot" style={{color: "#d10000",}}></i>
+                            </span>
                     ) : currentUser ? (
-                        <span onClick={() => { }}>
-                            <p>to show as not voted</p>
+                        <span onClick={handleVote}>
+                           <i className="fa-solid fa-check-to-slot" style={{color: "#f7f7f7",}}></i>
                         </span>
                     ) : (
                         <OverlayTrigger placement="top" overlap={<Tooltip>Log in to vote for this image</Tooltip>}>
-                            <i className="fa-solid fa-check-to-slot"></i>
+                            <i className="fa-solid fa-check-to-slot" style={{color: "#f7f7f7",}}></i>
                         </OverlayTrigger>
                     )}
                     </div>

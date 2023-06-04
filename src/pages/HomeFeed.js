@@ -30,10 +30,6 @@ function HomeFeed() {
               </Col>
             </Row>
           </Container>
-        </div>
-        <p>text here</p>
-        <Button onClick={console.log(currentUser)}> Click here for print profile</Button>
-      </div>
     </div>
   )
 }
