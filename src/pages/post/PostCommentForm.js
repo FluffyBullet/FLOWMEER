@@ -45,28 +45,32 @@ function PostCommentForm(props) {
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
-        <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profileImage} />
-          </Link>
-          <Form.Control
-            className={styles.Form}
-            placeholder="my comment..."
-            as="textarea"
-            value={content}
-            onChange={handleChange}
-            rows={2}
-          />
-        </InputGroup>
-      </Form.Group>
-      <button
-        className={`${styles.Button} btn d-block ml-auto`}
-        disabled={!content.trim()}
-        type="submit"
-      >
-        post
-      </button>
+      <div class={styles.CommentBody}>
+        <div className={styles.CommentTextForm}>
+        <Form.Group>
+          <InputGroup>
+
+            <Form.Control
+              className={styles.Form}
+              placeholder="my comment..."
+              as="textarea"
+              value={content}
+              onChange={handleChange}
+              rows={2}
+            />
+          </InputGroup>
+        </Form.Group>
+          </div>
+        <div className={styles.CommentSubmit}>
+        <button
+          className={`${styles.Button} btn d-block ml-auto`}
+          disabled={!content.trim()}
+          type="submit"
+        >
+          post
+        </button>
+        </div>
+      </div>
     </Form>
   );
 }

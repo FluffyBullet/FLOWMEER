@@ -1,0 +1,12 @@
+.CommentBody {
+    display:inline-flex;
+}
+
+.CommentTextForm {
+    width: 70%;
+}
+
+.CommentSubmit {
+    height:100%;
+    width:30%;
+}
