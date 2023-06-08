@@ -12,6 +12,8 @@
 
 .PostImage { 
     max-height:250px;
+    width:fit-content;
+    max-width:90%;
 }
 /* content details - different style to gain attraction */
 .SubTitles {
@@ -46,7 +48,7 @@
 @media screen and (min-width:760px){
     /* Allow space for sidebar columns on med/full screens */
     .MainCard {
-        width:65%;
+        width:45%;
     }
 
     /* To avoid over stretch of image */

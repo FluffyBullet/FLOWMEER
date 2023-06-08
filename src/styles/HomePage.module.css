@@ -29,3 +29,14 @@
     overflow:visible;
     transition: width 0.4s ease-out;
 }
+
+.mobileHide { 
+    /* display:none; */
+}
+
+
+@media screena and (min-width:750px){
+    .mobileHide { 
+        display:inline;
+    }
+}

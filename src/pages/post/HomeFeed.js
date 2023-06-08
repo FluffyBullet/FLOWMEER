@@ -10,6 +10,7 @@ import Asset from '../../components/Asset';
 import NoResults from "../../assets/empty.jpg";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
+import SideFilter from './SideFilter';
 
 
 
@@ -41,7 +42,7 @@ function HomeFeed({ message, filter = "" }) {
     return () => {
       clearTimeout(timer)
     }
-  }, [filter, query, pathname]); 
+  }, [filter, query, pathname]);
 
   const addPostIcon = (
     <Link
@@ -53,58 +54,69 @@ function HomeFeed({ message, filter = "" }) {
 
   return (
     <div>
-      <div >
-        <div className={HomePage.title}>
-          {/* Header of main feed to customize display */}
-          <Container>
-            <Row>
-              <Col className={HomePage.centerPost}>
-                {currentUser && addPostIcon}
-              </Col>
-              <Col>
-                <Form 
-                onSubmit = {(event) => event.preventDefault()}>
-                  <Form.Group className={HomePage.SearchFor}>
-                    <Form.Label className="d-none"> Serach Bar</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder = "Search"
-                      value={query}
-                      onChange={(event) => setQuery(event.target.value)}
-                      >
-                    </Form.Control>
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                  </Form.Group>
-                </Form>
-                <p><i className="fa-solid fa-filter"></i> Filter</p>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        {hasLoaded ? (
-          <>
-            {posts.results.length ? (
-              <InfiniteScroll
-                children={posts.results.map((post) => (
-                  <Post key={post.id} {...post} setPosts={setPosts} />
-                ))}
-                dataLength={posts.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!posts.next}
-                next={() => fetchMoreData(posts, setPosts)}
-              />
-            ) : (
+      <Row>
+        <Col className={HomePage.mobileHide}>
+        </Col>
+        <Col>
+          <div >
+            <div className={HomePage.title}>
+              {/* Header of main feed to customize display */}
               <Container>
-                <Asset src={NoResults} height={20} message={message} />
+                <Row>
+                  <Col className={HomePage.centerPost}>
+                    {currentUser && addPostIcon}
+                  </Col>
+                  <Col>
+                    <Form
+                      onSubmit={(event) => event.preventDefault()}>
+                      <Form.Group className={HomePage.SearchFor}>
+                        <Form.Label className="d-none"> Serach Bar</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="Search"
+                          value={query}
+                          onChange={(event) => setQuery(event.target.value)}
+                        >
+                        </Form.Control>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                      </Form.Group>
+                    </Form>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+            {hasLoaded ? (
+              <>
+                {posts.results.length ? (
+                  <InfiniteScroll
+                    children={posts.results.map((post) => (
+                      <Post key={post.id} {...post} setPosts={setPosts} />
+                    ))}
+                    dataLength={posts.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!posts.next}
+                    next={() => fetchMoreData(posts, setPosts)}
+                  />
+                ) : (
+                  <Container>
+                    <Asset src={NoResults} height={20} message={message} />
+                  </Container>
+                )}
+              </>
+            ) : (
+              <Container >
+                <Asset Spinner />
               </Container>
             )}
-          </>
-        ) : (
-          <Container >
-            <Asset Spinner />
-          </Container>
-        )}
-      </div>
+          </div>
+        </Col>
+        <Col className={HomePage.mobileHide}>
+        <div>
+          <SideFilter/>
+        </div>
+        </Col>
+
+      </Row>
 
     </div>
   )

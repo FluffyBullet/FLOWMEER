@@ -1,0 +1,10 @@
+.backgroundGreen {
+    background-color:#DCEDC8;
+    height:30vh;
+    width:60%;
+    margin:0 auto;
+    justify-content:right;
+    position:sticky;
+    position: -webkit-sticky;
+    padding:15px;
+}
