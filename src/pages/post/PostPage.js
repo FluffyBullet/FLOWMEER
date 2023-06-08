@@ -12,10 +12,10 @@ function PostPage() {
   const currentUser = useCurrentUser();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: []});
+  const {id} = useParams();
+  const[post, setPost] = useState({results: []});
   
   useEffect(()=> {
-      const {id} = useParams();
-      const[post, setPost] = useState({results: []});
         const handleMount = async () => {
             try {
                 const [{data: post}] = await Promise.all([

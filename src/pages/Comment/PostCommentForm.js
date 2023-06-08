@@ -9,7 +9,7 @@ import styles from "../../styles/CommentCreateEditForm.module.css";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function PostCommentForm(props) {
-  const { post, setPost, setComments } = props;
+  const { post, setPost, setComments, } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -38,7 +38,7 @@ function PostCommentForm(props) {
       setContent("");
     } catch (err) {
       console.log(err);
-      console.log(data);
+      ;
     }
   };
 

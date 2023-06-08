@@ -97,7 +97,7 @@ const Post = (props) => {
                                 <span>{updated_at}</span>
                             </div>
                         </Col>
-                        <Col className="`${styles.SubTitles} text-align-right`">
+                        <Col className="`${styles.SubTitles}` text-align-right">
                             {flower_tag}
                         </Col>
                     </Row>
@@ -132,8 +132,8 @@ const Post = (props) => {
                         <Col>
                             <div>
                                 <Link to={`/post/${id}`}>
-                                    Comment Section
                                     {comments_count}
+                                    Comments
                                 </Link>
                             </div>
                         </Col>
