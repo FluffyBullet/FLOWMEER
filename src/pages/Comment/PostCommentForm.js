@@ -1,17 +1,15 @@
 // Complete code provided by Code Institute via walkthrough on moments.
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function PostCommentForm(props) {
-  const { post, setPost, setComments, profileImage, profile_id } = props;
+  const { post, setPost, setComments } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -40,35 +38,35 @@ function PostCommentForm(props) {
       setContent("");
     } catch (err) {
       console.log(err);
+      console.log(data);
     }
   };
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <div class={styles.CommentBody}>
         <div className={styles.CommentTextForm}>
-        <Form.Group>
-          <InputGroup>
-
-            <Form.Control
-              className={styles.Form}
-              placeholder="my comment..."
-              as="textarea"
-              value={content}
-              onChange={handleChange}
-              rows={2}
-            />
-          </InputGroup>
-        </Form.Group>
+          <Form.Group>
+            <InputGroup>
+              <Form.Control
+                className={styles.CommentForm}
+                placeholder="my comment..."
+                as="textarea"
+                value={content}
+                onChange={handleChange}
+                rows={1}
+              />
+            </InputGroup>
+          </Form.Group>
+          <div className={styles.CommentSubmit}>
+            <button
+              className={`${styles.Button} btn d-block ml-auto`}
+              disabled={!content.trim()}
+              type="submit"
+            >
+              post
+            </button>
           </div>
-        <div className={styles.CommentSubmit}>
-        <button
-          className={`${styles.Button} btn d-block ml-auto`}
-          disabled={!content.trim()}
-          type="submit"
-        >
-          post
-        </button>
         </div>
       </div>
     </Form>

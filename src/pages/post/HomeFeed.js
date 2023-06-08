@@ -3,7 +3,6 @@ import HomePage from '../../styles/HomePage.module.css';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import axios from 'axios';
 import { axiosReq } from '../../api/axiosDefaults';
 import Post from './Post';
 import Asset from '../../components/Asset';
@@ -11,7 +10,8 @@ import NoResults from "../../assets/empty.jpg";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import SideFilter from './SideFilter';
-
+import PopularFlowers from './PopularFlowers';
+import PostCommentForm from '../Comment/PostCommentForm';
 
 
 function HomeFeed({ message, filter = "" }) {
@@ -56,6 +56,9 @@ function HomeFeed({ message, filter = "" }) {
     <div>
       <Row>
         <Col className={HomePage.mobileHide}>
+        <div>
+          <SideFilter/>
+        </div>
         </Col>
         <Col>
           <div >
@@ -66,7 +69,7 @@ function HomeFeed({ message, filter = "" }) {
                   <Col className={HomePage.centerPost}>
                     {currentUser && addPostIcon}
                   </Col>
-                  <Col>
+                  <Col className={HomePage.PostFeed}>
                     <Form
                       onSubmit={(event) => event.preventDefault()}>
                       <Form.Group className={HomePage.SearchFor}>
@@ -111,9 +114,7 @@ function HomeFeed({ message, filter = "" }) {
           </div>
         </Col>
         <Col className={HomePage.mobileHide}>
-        <div>
-          <SideFilter/>
-        </div>
+              <PopularFlowers/>
         </Col>
 
       </Row>

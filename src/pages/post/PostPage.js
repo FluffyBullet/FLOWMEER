@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {axiosReq} from "../../api/axiosDefaults"
 import Post from "./Post";
-import PostCommentForm from "./PostCommentForm";
+import PostCommentForm from "../Comment/PostCommentForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Col, Container, Row } from "react-bootstrap";
 
 
 function PostPage() {
-    const currentUser = useCurrentUser();
-    const profile_image = currentUser?.profile_image;
-    const [comments, setComments] = useState({ results: []});
-    const {id} = useParams();
-    const[post, setPost] = useState({results: []});
-
-
-    useEffect(()=> {
+  
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: []});
+  
+  useEffect(()=> {
+      const {id} = useParams();
+      const[post, setPost] = useState({results: []});
         const handleMount = async () => {
             try {
                 const [{data: post}] = await Promise.all([

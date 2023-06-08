@@ -48,7 +48,7 @@
 @media screen and (min-width:760px){
     /* Allow space for sidebar columns on med/full screens */
     .MainCard {
-        width:45%;
+        width:100%;
     }
 
     /* To avoid over stretch of image */

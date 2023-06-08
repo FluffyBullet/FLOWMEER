@@ -1,12 +1,21 @@
 .CommentBody {
-    display:inline-flex;
-}
-
-.CommentTextForm {
-    width: 70%;
+    margin-top:15px;
+    width:70%;
+    display:inline-block;
 }
 
 .CommentSubmit {
     height:100%;
     width:30%;
+    display:inline-block;
+}
+
+Form {
+    width:100%;
+}
+
+.CommentForm {
+    width:80%;
+    border:none;
+    border-bottom:2px solid saddlebrown;
 }
