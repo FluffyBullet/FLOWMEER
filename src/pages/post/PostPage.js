@@ -53,7 +53,10 @@ function PostPage() {
               ) : null}
               {comments.results.length ? (
                 comments.results.map(comment=> (
-                  <Comment key={comment.id} {...comment}/>
+                  <Comment key={comment.id} {...comment}
+                  setPost={setPost}
+                  setComment={setComments}
+                  />
                 ))
               ): currentUser ? (
                 <span> No comments yet</span>
