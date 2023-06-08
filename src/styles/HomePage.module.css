@@ -11,3 +11,21 @@
     display:flex;
     align-items:center;
 }
+
+.SearchFor {
+    display:inline-flex;
+    justify-content:center;
+}
+.SearchFor i {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    padding-left: 5px;
+    transition: width 0.4s ease-in-out;
+}
+
+.SearchFor input:focus-within {
+    width:250px;
+    overflow:visible;
+    transition: width 0.4s ease-out;
+}
