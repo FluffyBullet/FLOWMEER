@@ -28,7 +28,7 @@ const Comment = (props) => {
 
       setComments(prevComments => ({
         ...prevComments,
-        results: prevComments.results.filter(comment = comment.id !== id),
+        results: prevComments.results.filter((Comment) = Comment.id !== id),
       }))
     } catch(err){
       console.log(err)
@@ -36,6 +36,7 @@ const Comment = (props) => {
 }
 
   return (
+    <>
     <div className={styles.CommentContainer}>
         <div className={styles.UserImage}>
           <Link to ={`/profiles/${profile_id}`}>
@@ -52,7 +53,7 @@ const Comment = (props) => {
             content={content}
             profileImage={profile_image}
             setComments={setComments}
-            setShowEditForm={showEditForm}
+            setShowEditForm={setShowEditForm}
             />) : (
               <p>{content}</p>
             )}
@@ -63,6 +64,7 @@ const Comment = (props) => {
           handleDelete={handleDelete} />
         )}
     </div>
+    </>
   )
 }
 

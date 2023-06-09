@@ -5,7 +5,7 @@ import {axiosRes} from "../../api/axiosDefaults"
 import styles from "../../styles/CommentCreateEditForm.module.css"
 
 function CommentEditForm(props) {
-    const {id, content, showEditForm, setComments } = props;
+    const {id, content, setShowEditForm, setComments } = props;
     const [formContent, setFormContent] = useState(content);
 
     const handleChange = (event) => {
@@ -20,7 +20,7 @@ function CommentEditForm(props) {
             });
             setComments((prevComments) => ({
                 ...prevComments,
-                results: prevComments.results.map((comment => {
+                results: prevComments.results.map((comment) => {
                     return comment.id === id
                     ? {
                         ...comment,
@@ -28,9 +28,9 @@ function CommentEditForm(props) {
                         updated_at: "now",
                     }
                     : comment;
-                })),
+                }),
             }));
-            showEditForm(false);
+            setShowEditForm(false);
         } catch (err) {
             console.log(err)
         }
@@ -64,3 +64,5 @@ function CommentEditForm(props) {
     </Form>
   );
 }
+
+export default CommentEditForm;
