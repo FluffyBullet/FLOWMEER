@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import styles from '../../styles/SideFilter.module.css';
-import { Container } from 'react-bootstrap';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { Container, Row } from 'react-bootstrap';
 import { axiosReq } from '../../api/axiosDefaults';
+import Asset from '../../components/Asset';
 
-const SideFilter = () => {
+const UserProfile = () => {
   const [profileData, setProfileData] = useState({
     pageProfile: { results: [] },
     popularProfiles: { results: [] },
@@ -15,7 +16,6 @@ const SideFilter = () => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get('/profiles/');
-        console.log(data); // Check the received data
         setProfileData(prevState => ({
           ...prevState,
           popularProfiles: data,
@@ -31,19 +31,20 @@ const SideFilter = () => {
     }
   }, [isDataFetched]);
 
-return (
-  <div className={styles.backgroundGreen}>
-    <div className={styles.float}>
-      <h4><u>Filter Options</u> <i className="fa-solid fa-filter"></i></h4>
-      <sub><u>By Flower:</u></sub>
-      <Container>
-        <sup><u>By Poster</u></sup>
-        {popularProfiles.results.map(profile => (
-          <p key={profile.id}>{profile.owner}</p>
-        ))}
-      </Container>
-    </div>
-  </div>
-)
-        }
-export default SideFilter
+  return (
+    <Container>
+      <p>Most Followed</p>
+      {popularProfiles.results.length ? (
+        <>
+      {popularProfiles.results.map(profile => (
+        <p key={profile.id}>{profile.owner}</p>
+      ))}
+      </>
+      ) : (
+        <Asset Spinner />
+      )}
+    </Container>
+  );
+};
+
+export default UserProfile;

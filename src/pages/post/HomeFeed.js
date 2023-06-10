@@ -11,6 +11,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import SideFilter from './SideFilter';
 import PopularFlowers from './PopularFlowers';
+import UserProfile from '../profiles/UserProfile';
 
 
 function HomeFeed({ message, filter = "" }) {
@@ -21,6 +22,7 @@ function HomeFeed({ message, filter = "" }) {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+
     const fetchPosts = async () => {
       try {
         const { data } = await axiosReq.get(`/post/?${filter}search=${query}`);

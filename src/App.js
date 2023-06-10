@@ -11,6 +11,7 @@ import PostPage from './pages/post/PostPage';
 import './api/axiosDefaults';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import PostEditForm from "./pages/post/PostEditForm"
+import UserProfile from './pages/profiles/UserProfile';
 
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/post/create" element={<PostCreateForm/>}/>
           <Route exact path="/post/:id" element={<PostPage/>}/>
           <Route exact path="/post/:id/edit" element={<PostEditForm/>}/>
+          <Route exact path="/profile/:id" element={<UserProfile/>}/>
           <Route path="*" element={<p>Sorry, this page is not found</p>}/>
         </Routes>
       </Container>
