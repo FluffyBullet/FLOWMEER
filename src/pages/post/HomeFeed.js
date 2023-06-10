@@ -26,8 +26,6 @@ function HomeFeed({ message, filter = "" }) {
         const { data } = await axiosReq.get(`/post/?${filter}search=${query}`);
         setPosts(data);
         setHasLoaded(true);
-        console.log(`Search parameter = /post/?${filter}search=${query}`)
-        console.log(data)
       } catch (err) {
         console.log(err);
       }

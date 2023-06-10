@@ -34,7 +34,6 @@ export const CurrentUserProvider = ({ children }) => {
       async (config) => {
         try {
           await axios.post("/dj-rest-auth/token/refresh/");
-          console.log("request interceptor = " + CurrentUserContext)
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
@@ -57,7 +56,6 @@ export const CurrentUserProvider = ({ children }) => {
         if (err.response?.status === 401) {
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
-            console.log("request interceptor = " + CurrentUserContext)
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {

@@ -106,12 +106,10 @@ const Post = (props) => {
                             <div>
                                 {/* Row of variables to the post, how many votes, comment page and edit/delete section */}
                                 {is_owner ? (
-                                    <OverlayTrigger placement="top" overlap={<Tooltip>You cannot vote for yourself</Tooltip>}>
-                                        <>
+                                    <>
                                             <i className="fa-solid fa-check-to-slot"></i>
                                             <span>{votes_count} votes</span>
-                                        </>
-                                    </OverlayTrigger>
+                                            </>
                                 ) : votes_id ? (
                                     <span onClick={handleDeVote}>
                                         <i class="fa-solid fa-check-to-slot" style={{ color: "#d10000", }}></i>
