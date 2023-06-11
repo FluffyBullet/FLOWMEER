@@ -15,7 +15,6 @@ const SideFilter = () => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get('/profiles/');
-        console.log(data); // Check the received data
         setProfileData(prevState => ({
           ...prevState,
           popularProfiles: data,
