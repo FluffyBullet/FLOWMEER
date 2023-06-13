@@ -39,7 +39,7 @@ const UserPasswordForm = () => {
       // redirect user if they are not the owner of this profile
       navigate("/");
     }
-  }, [currentUser, history, id]);
+  }, [currentUser, navigate, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
