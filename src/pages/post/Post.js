@@ -46,6 +46,7 @@ const Post = (props) => {
         try {
             const { data } = await axiosRes.post('/votes/', { post: id });
             setPosts((prevPost) => ({
+                ...prevPost,
                 results: prevPost.results.map((post) => {
                     return post.id === id ?
                         { ...post, votes_count: post.votes_count + 1, votes_id: data.id }
@@ -58,12 +59,13 @@ const Post = (props) => {
     }
 
     const handleDeVote = async () => {
+        console.log(votes_id)
         try {
             await axiosRes.delete(`/votes/${votes_id}`);
             setPosts((prevPost) => ({
                 ...prevPost,
                 results: prevPost.results.map((post) =>
-                    post.id === id ? { ...post, votes_count: post.votes_count - 1, votes_id: null } : post
+                post.id === id ? { ...post, votes_count: post.votes_count - 1, votes_id: null } : post
                 ),
             }));
         } catch (err) {
@@ -86,9 +88,9 @@ const Post = (props) => {
                         {/* Row of information, Title, who by, when it was posted and what family is being featured */}
                         <Col className={styles.SubTitles}>
                             <div><strong>{title}</strong> by
-                                    <Link to={`/profiles/${profile_id}`}>
-                                        {owner}
-                                    </Link>
+                                <Link to={`/profiles/${profile_id}`}>
+                                    {owner}
+                                </Link>
                             </div>
 
                         </Col>
@@ -113,8 +115,8 @@ const Post = (props) => {
                                 {/* Row of variables to the post, how many votes, comment page and edit/delete section */}
                                 {is_owner ? (
                                     <>
-                                        <i className="fa-solid fa-check-to-slot"></i>
                                         <span>{votes_count} votes</span>
+                                        <p>You cannot vote for your own post.</p>
                                     </>
                                 ) : votes_id ? (
                                     <span onClick={handleDeVote}>
@@ -127,9 +129,10 @@ const Post = (props) => {
                                         <p>Not Voted</p>
                                     </span>
                                 ) : (
-                                    <OverlayTrigger placement="top" overlap={<Tooltip>Log in to vote for this image</Tooltip>}>
+                                    <div>
                                         <i className="fa-solid fa-check-to-slot" style={{ color: "#f7f7f7", }}></i>
-                                    </OverlayTrigger>
+                                        <p>Please log in to vote!</p>
+                                    </div>
                                 )}
                             </div>
                         </Col>

@@ -67,6 +67,5 @@ function PostPage() {
           </Col>
         </Row>
         </>);
-console.log(comments)
 }
 export default PostPage

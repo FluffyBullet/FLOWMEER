@@ -57,7 +57,7 @@ export function ProfileEditDropdown({id}) {
         >
             <Dropdown.Item
             className={styles.DropdownItem}
-            onClick={() => navigate(`profiles/${id}/edit`)}
+            onClick={() => navigate(`/profiles/${id}/edit`)}
             aria-label="edit-profile"
             >
             <i className="fas fa-edit" />
