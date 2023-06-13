@@ -22,8 +22,8 @@ function PostPage() {
                 const [{data: post},{data: comments}] = await Promise.all([
                     axiosReq.get(`/post/${id}`),
                     axiosReq.get(`/comments/?post=${id}`)
-                ]);
-                setPost({ results: [post]});
+                  ]);
+                  setPost({ results: [post]});
                 setComments(comments)
             } catch(err) {
                 console.log(err)
@@ -52,6 +52,7 @@ function PostPage() {
               ) : null}
               {comments.results.length ? (
                 comments.results.map(comment=> (
+
                   <Comment key={comment.id} {...comment}
                   setPost={setPost}
                   setComment={setComments}
@@ -66,6 +67,6 @@ function PostPage() {
           </Col>
         </Row>
         </>);
+console.log(comments)
 }
-
 export default PostPage

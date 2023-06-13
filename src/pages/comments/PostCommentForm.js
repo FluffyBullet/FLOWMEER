@@ -44,7 +44,7 @@ function PostCommentForm(props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <div class={styles.CommentBody}>
+      <div className={styles.CommentBody}>
         <div className={styles.CommentTextForm}>
           <Form.Group>
             <InputGroup>

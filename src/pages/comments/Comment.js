@@ -55,7 +55,7 @@ const Comment = (props) => {
             setComments={setComments}
             setShowEditForm={setShowEditForm}
             />) : (
-              <p>{content}</p>
+              <p>{content}  </p>
             )}
         </div>
         {is_owner && !showEditForm && (
