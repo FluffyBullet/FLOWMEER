@@ -11,7 +11,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 import SideFilter from './SideFilter';
 import PopularFlowers from './PopularFlowers';
-import UserProfile from '../profiles/UserProfile';
 
 
 function HomeFeed({ message, filter = "" }) {
@@ -55,9 +54,7 @@ function HomeFeed({ message, filter = "" }) {
     <div>
       <Row>
         <Col className={HomePage.mobileHide}>
-        <div>
           <SideFilter/>
-        </div>
         </Col>
         <Col>
           <div >

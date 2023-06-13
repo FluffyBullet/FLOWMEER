@@ -5,6 +5,7 @@ import { Card, Col, Media, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { PostOptions } from '../../components/PostOptions';
+import Profile from '../profiles/UserProfile';
 
 const Post = (props) => {
     const {
@@ -25,21 +26,21 @@ const Post = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
-    const navigate= useNavigate();
+    const navigate = useNavigate();
 
     const handleEdit = () => {
-       navigate(`/post/${id}/edit`);
-      };
-    
-      const handleDelete = async () => {
+        navigate(`/post/${id}/edit`);
+    };
+
+    const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/posts/${id}/`);
-          navigate(-1);
+            await axiosRes.delete(`/posts/${id}`);
+            navigate(-1);
         } catch (err) {
-          console.log(err);
+            console.log(err);
         }
-      };
-    
+    };
+
 
     const handleVote = async () => {
         try {
@@ -84,7 +85,12 @@ const Post = (props) => {
                     <Row>
                         {/* Row of information, Title, who by, when it was posted and what family is being featured */}
                         <Col className={styles.SubTitles}>
-                            <div><strong>{title}</strong> by <Link to={`/profiles/${profile_id}`}>{owner}</Link></div>
+                            <div><strong>{title}</strong> by
+                                    <Link to={`/profiles/${profile_id}`}>
+                                        {owner}
+                                    </Link>
+                            </div>
+
                         </Col>
                         <Col>
                             {flower_tag && <span className={styles.SubTitles}>Featuring:</span>}
@@ -107,9 +113,9 @@ const Post = (props) => {
                                 {/* Row of variables to the post, how many votes, comment page and edit/delete section */}
                                 {is_owner ? (
                                     <>
-                                            <i className="fa-solid fa-check-to-slot"></i>
-                                            <span>{votes_count} votes</span>
-                                            </>
+                                        <i className="fa-solid fa-check-to-slot"></i>
+                                        <span>{votes_count} votes</span>
+                                    </>
                                 ) : votes_id ? (
                                     <span onClick={handleDeVote}>
                                         <i class="fa-solid fa-check-to-slot" style={{ color: "#d10000", }}></i>

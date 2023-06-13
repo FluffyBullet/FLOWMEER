@@ -1,50 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Container, Row } from 'react-bootstrap';
-import { axiosReq } from '../../api/axiosDefaults';
-import Asset from '../../components/Asset';
+import React from "react";
 
-const UserProfile = () => {
-  const [profileData, setProfileData] = useState({
-    pageProfile: { results: [] },
-    popularProfiles: { results: [] },
-  });
-  const [isDataFetched, setIsDataFetched] = useState(false);
-  const { popularProfiles } = profileData;
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
+import Avatar from "../../components/Avatar";
+import { Button } from "react-bootstrap";
 
-  useEffect(() => {
-    const handleMount = async () => {
-      try {
-        const { data } = await axiosReq.get('/profiles/');
-        setProfileData(prevState => ({
-          ...prevState,
-          popularProfiles: data,
-        }));
-        setIsDataFetched(true);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+const Profile = (props) => {
+  console.log(props)
+  const { profile, imageSize = 55 } = props;
+  const { id, following_id, image, owner } = profile;
 
-    if (!isDataFetched) {
-      handleMount();
-    }
-  }, [isDataFetched]);
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
 
   return (
-    <Container>
-      <p>Most Followed</p>
-      {popularProfiles.results.length ? (
-        <>
-      {popularProfiles.results.map(profile => (
-        <p key={profile.id}>{profile.owner}</p>
-      ))}
-      </>
-      ) : (
-        <Asset Spinner />
-      )}
-    </Container>
+    <div
+      className={`my-3 d-flex align-items-center flex-column"}`}
+    >
+      <div>
+        <Link className="align-self-center" to={`/profiles/${id}`}>
+          <Avatar src={image} height={imageSize} />
+        </Link>
+      </div>
+      <div>
+        <strong>{owner}</strong>
+      </div>
+      <div className={`text-right ml-auto"`}>
+      </div>
+    </div>
   );
 };
 
-export default UserProfile;
+export default Profile;
