@@ -13,6 +13,7 @@ import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataCon
 import { useParams } from "react-router-dom";
 import Post from "../post/Post";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
