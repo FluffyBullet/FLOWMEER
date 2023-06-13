@@ -6,7 +6,6 @@ import Avatar from "../../components/Avatar";
 import { Button } from "react-bootstrap";
 
 const Profile = (props) => {
-  console.log(props)
   const { profile, imageSize = 55 } = props;
   const { id, following_id, image, owner } = profile;
 

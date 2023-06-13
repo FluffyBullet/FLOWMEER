@@ -53,11 +53,10 @@ function PostCreateForm() {
         formData.append('title', title);
         formData.append('flower_tag', flower_tag);
         formData.append('image', imageInput.current.files[0]);
-        console.log(useCurrentUser)
 
         try {
             const { data } = await axiosReq.post('/post/', formData);
-            navigate(`post/${data.id}`)
+            navigate(`/post/${data.id}`)
         } catch (err) {
             console.log(err)
             if (err.response?.status !== 401) {
@@ -162,7 +161,7 @@ function PostCreateForm() {
             <Row>
                 <Col >
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                        className={`d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
                             {image ? (

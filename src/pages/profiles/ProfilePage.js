@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import Post from "../post/Post";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import {ProfileEditDropdown} from '../../components/PostOptions'
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -47,6 +48,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
+    {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row className="d-flex justify-content-center">
         <Col>
           <Image roundedCircle
