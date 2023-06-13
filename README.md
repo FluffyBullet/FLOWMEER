@@ -30,7 +30,13 @@ For my fith project on my level 5 course of full stack developer, I I have chose
 
 |Link to the live website is here:||
 |----|----|
-|<img src="./src/assets/logo.png" height=100px> | https://flowmeer.herokuapp.com |
+|<img src="./readme_files/logo.png" height=100px> | https://flowmeer.herokuapp.com |
+| README Page: | https://github.com/FluffyBullet/flowmeer |
+
+|Link to the live Database is here:||
+|----|----|
+|<img src="./readme_files/logo.png" height=100px> | https://flowmeerdb.herokuapp.com |
+| README Page: | https://github.com/FluffyBullet/flowmeerdb |
 
 
 Link to my readme file and RAW file is here: 
@@ -136,6 +142,19 @@ The light green is used as a background color, blending light color applications
 Brown will be used for text and hover overlays, representing the soil/compost during gardening. This color will contrast enough for the user to see the highlighted icons and read with ease.
 Dark Green is used for the logo created and the name to create a contrast. The dark green section of the name - flowmeer highlights the name of "FLOWER" whilst the red places "ME" within the flower.
 
+## Testing
+
+
+### Behaviour Driven Development
+
+Before completing of my project, I followed a series of user stories to outline the features required for the website but also as a test after each stage to ensure the feature works as expected.
+
+Each user story is created as a case on a KanBan board also hosted via github and linked to the respository. This can be viewed here: https://github.com/users/FluffyBullet/projects/3/views/1
+
+
+
+### Validator checks:
+
 
 ## __Deployment__
 
@@ -144,11 +163,32 @@ Below walkthrough will display how to create a copy of my project, but also how 
 
 ### Github
 Creating a copy of the repository can be completed by visiting the respository's link provided above, opening a browser and directing to my github/project page.
-### Salesforce / Heroku
-- Creating a new environment
-- Required Links
-- Requesting a deploy of your website.
 
+Navigate to the respository either above or here:https://github.com/FluffyBullet/flowmeer
+
+On the light grey banner across the top, select the dropdown menu adjacent to "Fork", chosing the option to create a new fork.
+
+This will allow you to make a replicate of my project and save on your personal (or chosen) github account for further developments.
+
+
+### Salesforce / Heroku
+
+ Create app project in Heroku
+    - An account will need to be created for salesforce/heroku to continue.
+    - Within the heading banner of your logged in page, you can create a new application.
+    - Link your respository for the front end application with Heroku, then either pushing for manual deployment on heroku, or automatic.
+    - Once your app is created, head over to the settings tab, where you are met with the inner-workings of the application. Here you will find a section dedicated for config var (variables).
+        - Within this section, you are required to enter variables which allow your database to communicate with. This includes; allowed host, client origin, database url and any other external url's you are using.
+
+## Future amendments
+
+This project has taken the most volume of time comparing to my previous projects, which forced me to limit the features included for my initial creation. The design of this website has allowed room for expansion on future projects and better my understanding of React. Future amendments will include:
+
+1. Side filter to offer pre-selected filters of post, refining the displayed post in the main feed. [including Users/Posters, Flower Type]
+1. Adding region to users profiles, adding a further filter tag for local posters.
+1. Connection with above mentioned api https://perenual.com - offering a profile page for range of flowers, including images, common and scientific names and many more.
+1. Vote selections to be suitable for seasonal periods, breaking post to the 4 seasons of the year and further to filter per year. In example Winter 2022
+1. re-design to Profile page, including top 3 voted post across the top within a different banner, followed by post by the user.
 
 ## __References__
 
