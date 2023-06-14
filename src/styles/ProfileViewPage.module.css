@@ -1,0 +1,6 @@
+.usersImage {
+    border: solid 4px green;
+    height: 200px;
+    width: 200px;
+    box-shadow: 5px 5px 5px black;
+}

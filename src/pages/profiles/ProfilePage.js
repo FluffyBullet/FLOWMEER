@@ -7,7 +7,6 @@ import Container from "react-bootstrap/Container";
 import Asset from "../../components/Asset";
 import Image from 'react-bootstrap/Image';
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import SideFilter from "../post/SideFilter";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
 import { useParams } from "react-router-dom";
@@ -15,6 +14,7 @@ import Post from "../post/Post";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import {ProfileEditDropdown} from '../../components/PostOptions'
+import style from '../../styles/ProfileViewPage.module.css';
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -48,15 +48,20 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-    {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row className="d-flex justify-content-center">
         <Col>
           <Image roundedCircle
-          src = {profile?.image}/>
+          className = {style.usersImage}
+          src = {profile?.profile_pic}/>
         </Col>
+        </Row>
+        <Row>
         <Col >
-          <h3 >{profile?.owner}</h3>
-          <p>Favourite Flowers:{profile?.fav_flower_family}</p>
+          <h3 className="mt-3"><strong><u>{profile?.owner}</u></strong></h3>
+          <p>Favourite Flowers:  {profile?.fav_flower_family}</p>
+        </Col>
+        <Col>
+          {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
         </Col>
       </Row>
     </>
@@ -86,7 +91,7 @@ function ProfilePage() {
   return (
     <Row>
       <Col>
-        <Container >
+        <Container>
           {hasLoaded ? (
             <>
               {mainProfile}

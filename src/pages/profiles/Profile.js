@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
+
 const Profile = (props) => {
 
   const {profile, imageSize=55} = props;
