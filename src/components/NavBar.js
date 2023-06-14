@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import {Navbar, Container, Nav} from "react-bootstrap";
-import logo from '../assets/logo.png'
-import styles from '../styles/NavBar.module.css'
+import logo from '../assets/logo.png';
+import styles from '../styles/NavBar.module.css';
 import {NavLink} from "react-router-dom";
 import {
     useCurrentUser,
@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import Avatar from '../components/Avatar';
 import axios from 'axios';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import Profile from '../pages/profiles/Profile';
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -32,7 +33,7 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.pk}`}
         >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <Avatar src={currentUser?.image} text="Profile" height={40} /><br/>
         <p>{currentUser?.username}</p>
       </NavLink>
         <NavLink
@@ -42,6 +43,7 @@ const NavBar = () => {
         </NavLink>
 
         </>
+        
 
     const LoggedOutIcons =(
         <> 

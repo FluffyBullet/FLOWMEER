@@ -26,27 +26,29 @@ const ProfileEditForm = () => {
   const imageFile = useRef();
 
   const [profileData, setProfileData] = useState({
-    name: "",
-    content: "",
-    image: "",
+    first_name: "",
+    last_name: "",
+    fav_flower_family: "",
+    profile_pic: "",
   });
-  const { name, content, image } = profileData;
+  const { first_name, last_name, fav_flower_family, profile_pic } = profileData;
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const handleMount = async () => {
-      if (currentUser?.profile_id?.toString() === id) {
+
+      if (currentUser.pk.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
+          const { name, first_name, last_name, fav_flower_family, profile_pic } = data;
+          setProfileData({ name, first_name, last_name, fav_flower_family, profile_pic });
         } catch (err) {
           console.log(err);
           navigate("/");
         }
       } else {
-        navigate("/");
+        navigate('/');
       }
     };
 
@@ -63,40 +65,95 @@ const ProfileEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("content", content);
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
+    formData.append("fav_flower_family", fav_flower_family);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append("profile_pic", imageFile?.current?.files[0]);
     }
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        profile_image: data.image,
+        profile_pic: data.image,
       }));
-      navigate(-1);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
     }
+    navigate(-1);
   };
 
   const textFields = (
     <>
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={content}
-          onChange={handleChange}
-          name="content"
-          rows={7}
-        />
+        <Form.Label>First Name:</Form.Label>
+        <Form.Control 
+        type="text"
+        placeholder="First Name Here"
+        value={first_name}
+        onChange={handleChange}
+        >
+
+        </Form.Control>
+        <Form.Label>Last Name:</Form.Label>
+        <Form.Label>Favourite Flower Family:</Form.Label>
+        <Form.Control as="select"
+                        value={fav_flower_family}
+                        name="fav_flower_family"
+                        onChange={handleChange}>
+                    <option className="d-none" value="">
+                         Select Option
+                    </option>
+                    <option>Select flower Family</option>
+                    <option value="peruvian_lily">Peruvian Lily</option>
+                    <option value="colchicum">Colchicum</option>
+                    <option value="lily">Lily</option>
+                    <option value="orchid">Orchid</option>
+                    <option value="iris">Iris</option>
+                    <option value="asphodel">Asphodel</option>
+                    <option value="daffodil">Daffodil</option>
+                    <option value="asparagus">Asparagus</option>
+                    <option value="poppy">Poppy</option>
+                    <option value="buttercup">Buttercup</option>
+                    <option value="saxifrage">Saxifrage</option>
+                    <option value="stonecrop">Stonecrop</option>
+                    <option value="pea">Pea</option>
+                    <option value="rose">Rose</option>
+                    <option value="spurge">Spurge</option>
+                    <option value="violet">Violet</option>
+                    <option value="st_johns_wort">St Johns Wort</option>
+                    <option value="geranium">Geranium</option>
+                    <option value="loosestrife">Loosestrife</option>
+                    <option value="willow-herb">Willow-herb</option>
+                    <option value="mallow">Mallow</option>
+                    <option value="rock_rose">Rock Rose</option>
+                    <option value="cabbage">Cabbage</option>
+                    <option value="sea_lavender">Sea Lavender</option>
+                    <option value="pink">Pink</option>
+                    <option value="phlox">Phlox</option>
+                    <option value="primrose">Primrose</option>
+                    <option value="heath">Heath</option>
+                    <option value="periwinkle">Periwinkle</option>
+                    <option value="borage">Borage</option>
+                    <option value="convolvulus">Convolvulus</option>
+                    <option value="nightshade">Nightshade</option>
+                    <option value="olive">Olive</option>
+                    <option value="plantain">Plantain</option>
+                    <option value="figwort">Figwort</option>
+                    <option value="mint">Mint</option>
+                    <option value="acanthus">Acanthus</option>
+                    <option value="verbena">Verbena</option>
+                    <option value="bellflower">Bellflower</option>
+                    <option value="daisy">Daisy</option>
+                    <option value="umbellifer">Umbellifer</option>
+                    <option value="honeysuckle">Honeysuckle</option>
+                </Form.Control>
       </Form.Group>
 
-      {errors?.content?.map((message, idx) => (
+      {errors?.fav_flower_family?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -118,12 +175,12 @@ const ProfileEditForm = () => {
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container>
             <Form.Group>
-              {image && (
+              {profile_pic && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image src={profile_pic} fluid />
                 </figure>
               )}
-              {errors?.image?.map((message, idx) => (
+              {errors?.profile_pic?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>
@@ -144,7 +201,7 @@ const ProfileEditForm = () => {
                   if (e.target.files.length) {
                     setProfileData({
                       ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
+                      profile_pic: URL.createObjectURL(e.target.files[0]),
                     });
                   }
                 }}

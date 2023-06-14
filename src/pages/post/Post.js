@@ -12,7 +12,7 @@ const Post = (props) => {
         id,
         owner,
         profile_id,
-        profile_image,
+        profile_pic,
         comments_count,
         flower_tag,
         votes_count,
@@ -31,6 +31,7 @@ const Post = (props) => {
     const handleEdit = () => {
         navigate(`/post/${id}/edit`);
     };
+    console.log("props = " + profile_pic)
 
     const handleDelete = async () => {
         try {
@@ -120,7 +121,7 @@ const Post = (props) => {
                                     </>
                                 ) : votes_id ? (
                                     <span onClick={handleDeVote}>
-                                        <i class="fa-solid fa-check-to-slot" style={{ color: "#d10000", }}></i>
+                                        <i className="fa-solid fa-check-to-slot" style={{ color: "#d10000", }}></i>
                                         <p>Voted</p>
                                     </span>
                                 ) : currentUser ? (

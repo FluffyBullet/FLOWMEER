@@ -10,7 +10,7 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 const Profile = (props) => {
 
   const {profile, imageSize=55} = props;
-  const {id, image, owner} = profile;
+  const {id, profile_pic, owner} = profile;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username ===owner;
@@ -18,7 +18,7 @@ const Profile = (props) => {
   return (
     <Container>
       <Link clasNAme="align-self-center" to={`/profiles/${id}`}>
-        <Avatar src={image} height={imageSize}/>
+        <Avatar src={profile_pic} height={imageSize}/>
       </Link>
       {profile.id}
       {profile.username}
