@@ -116,24 +116,37 @@ const Post = (props) => {
                                 {/* Row of variables to the post, how many votes, comment page and edit/delete section */}
                                 {is_owner ? (
                                     <>
+                                    <OverlayTrigger
+                                    overlay ={<Tooltip ><p>You cannot vote on your own post</p></Tooltip>}
+                                    >
                                         <span>{votes_count} votes</span>
-                                        <p>You cannot vote for your own post.</p>
+                                        </OverlayTrigger>
                                     </>
                                 ) : votes_id ? (
                                     <span onClick={handleDeVote}>
                                         <i className="fa-solid fa-check-to-slot" style={{ color: "#d10000", }}></i>
-                                        <p>Voted</p>
+                                        <p>Voted</p> <br/>
+                                        <span>{votes_count} votes</span>
                                     </span>
                                 ) : currentUser ? (
+                                    <>
                                     <span onClick={handleVote}>
                                         <i className="fa-solid fa-check-to-slot" style={{ color: "#f7f7f7", }}></i>
-                                        <p>Not Voted</p>
+                                        <p>Not Voted</p><br/>
+                                        <span>{votes_count} votes</span>
                                     </span>
+                                    </>
                                 ) : (
-                                    <div>
+                                    <>
+                                        <OverlayTrigger
+                                    overlay ={<Tooltip ><p>Please log in to vote</p></Tooltip>}
+                                    >
+                                        <div>
                                         <i className="fa-solid fa-check-to-slot" style={{ color: "#f7f7f7", }}></i>
-                                        <p>Please log in to vote!</p>
-                                    </div>
+                                        <span>{votes_count} votes</span>
+                                        </div>
+                                        </OverlayTrigger>
+                                    </>
                                 )}
                             </div>
                         </Col>
