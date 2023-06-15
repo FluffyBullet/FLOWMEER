@@ -151,6 +151,23 @@ Before completing of my project, I followed a series of user stories to outline 
 
 Each user story is created as a case on a KanBan board also hosted via github and linked to the respository. This can be viewed here: https://github.com/users/FluffyBullet/projects/3/views/1
 
+As a walkthrough with expected users, I have created the below table to advise of their expected behaviours and if successful:
+
+| As a user I wish to: | Method: |  Result: | 
+| ---- | ----- | ---- |
+| See all post displayed on the site | Loading https://flowmeer.herokuapp.com | Working |
+| Focus in on post created by other users with an individual page | Click on the post displayed image | Working |
+| Create a user for the site | Click on Sign Up icon on the dropdown menu | Working | 
+| Log out when required | Use the bottom left navigation "sign out icon" | Working |
+| Vote for an image I like | Click on the voted Icon | Working | 
+| See if I have voted for an image | Image displays when voted for and available | Working |
+| Make a post on a posters image | Click into the post, type inside the comment field and post | Working |
+| Edit my comment I've made | Going into the comment I've made, selecting the three dot icons and edit or delete post | Working |
+| Filter post to my requirements | use search bar on the header tab | Working |
+| Create a post | Select the create post button, enter details and select post | Working | 
+| Edit or delete my post | Select the comment created, press same three dots and select edit or delete | Working |
+| Update my profile | When selecting my profile, I can press on the three dots and chose to update either details, username or password | Working | 
+| View other users and their post on a set page | Press either the profile icon or link on the post to go into their page | Working |
 
 
 ### Validator checks:
